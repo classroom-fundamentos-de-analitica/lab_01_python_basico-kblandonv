@@ -265,7 +265,6 @@ def pregunta_09():
 # Ejecutar la función y mostrar el resultado
 print(pregunta_09())
 
-
 def pregunta_10():
     # Diccionario para almacenar el recuento de elementos por letra de la columna 1
     conteo_elementos = {}
@@ -300,6 +299,8 @@ def pregunta_10():
 
 # Ejecutar la función y mostrar el resultado
 print(pregunta_10())
+
+
 
 
 def pregunta_11():
