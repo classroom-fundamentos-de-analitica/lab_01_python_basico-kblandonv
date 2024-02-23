@@ -294,7 +294,9 @@ def pregunta_10():
     for letra, elementos in conteo_elementos.items():
         for elemento in elementos:
             lista_tuplas.append((letra, elemento[0], elemento[1]))
-
+    
+    # Ordenar el diccionario alfabéticamente por las claves
+    lista_tuplas.sort(key=lambda x: x[0])
     return lista_tuplas
 
 # Ejecutar la función y mostrar el resultado
