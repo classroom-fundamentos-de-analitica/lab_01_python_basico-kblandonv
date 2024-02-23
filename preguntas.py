@@ -266,13 +266,13 @@ def pregunta_09():
 print(pregunta_09())
 
 def pregunta_10():
-    # Diccionario para almacenar el recuento de elementos por letra de la columna 1
-    conteo_elementos = {}
+    # Lista para almacenar las tuplas con un índice de orden
+    tuplas_con_indice = []
 
     # Abrir el archivo en modo lectura
     with open('data.csv', 'r') as file:
         # Iterar sobre cada línea del archivo
-        for line in file:
+        for idx, line in enumerate(file):
             # Dividir la línea en columnas usando el tabulador como delimitador
             columns = line.strip().split('\t')
             letra_columna_1 = columns[0]
@@ -283,24 +283,19 @@ def pregunta_10():
             cantidad_elementos_columna_4 = len(elementos_columna_4)
             cantidad_elementos_columna_5 = len(elementos_columna_5)
 
-            # Verificar si la letra ya está en el diccionario
-            if letra_columna_1 in conteo_elementos:
-                conteo_elementos[letra_columna_1].append((cantidad_elementos_columna_4, cantidad_elementos_columna_5))
-            else:
-                conteo_elementos[letra_columna_1] = [(cantidad_elementos_columna_4, cantidad_elementos_columna_5)]
+            # Agregar la tupla con el índice de orden
+            tuplas_con_indice.append((idx, letra_columna_1, cantidad_elementos_columna_4, cantidad_elementos_columna_5))
 
-    # Convertir el diccionario a la lista de tuplas
-    lista_tuplas = []
-    for letra, elementos in conteo_elementos.items():
-        for elemento in elementos:
-            lista_tuplas.append((letra, elemento[0], elemento[1]))
-    
-    # Ordenar el diccionario alfabéticamente por las claves
-    lista_tuplas.sort(key=lambda x: x[0])
+    # Ordenar la lista de tuplas según el índice de orden
+    tuplas_con_indice.sort(key=lambda x: x[0])
+
+    # Eliminar el índice de orden y devolver la lista de tuplas
+    lista_tuplas = [(tupla[1], tupla[2], tupla[3]) for tupla in tuplas_con_indice]
     return lista_tuplas
 
 # Ejecutar la función y mostrar el resultado
 print(pregunta_10())
+
 
 
 
